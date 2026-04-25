@@ -1,117 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Automatic redirect after 5 seconds -->
-    <meta http-equiv="refresh" content="5; url=https://discord.gg/invite/wwgS3fBHNR">
-    <title>Lancasters SMP | Remote Login</title>
+    <!-- Automatic browser redirect after 5 seconds -->
+    <meta http-equiv="refresh" content="5; url=https://discord.gg">
+    <title>Lancasters SMP | Redirecting</title>
     
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body, html {
             height: 100%;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Uses background.png from your repository */
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+            /* Using your repository background image */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                         url('background.png');
             background-size: cover;
             background-position: center;
-            color: white;
+            color: #ffffff;
             overflow: hidden;
         }
 
-        .login-card {
-            background: rgba(30, 30, 35, 0.9);
-            padding: 40px;
+        .discord-card {
+            background: #313338; /* Discord's dark background color */
+            padding: 32px;
             border-radius: 8px;
-            width: 350px;
+            width: 480px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
         }
 
         .logo {
-            width: 70px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             margin-bottom: 20px;
+            object-fit: cover;
+            /* Looks for logo.png in your repo */
+            background-color: #5865F2; 
         }
 
-        h2 {
-            font-weight: 400;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
+        h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #f2f3f5;
         }
 
-        .status-text {
-            color: #aaa;
-            font-size: 0.9em;
-            margin-bottom: 20px;
+        .subtitle {
+            color: #b5bac1;
+            font-size: 16px;
+            margin-bottom: 24px;
         }
 
-        /* The Instant Redirect Button */
-        .btn {
-            background-color: #82b541; /* Minecraft green */
-            color: white;
-            padding: 14px;
-            border: none;
+        .timer-container {
+            background: #2b2d31;
+            padding: 16px;
             border-radius: 4px;
+            margin-bottom: 24px;
+            border: 1px solid #1e1f22;
+        }
+
+        .timer-text {
+            font-size: 14px;
+            color: #dbdee1;
+        }
+
+        #countdown {
+            font-weight: bold;
+            color: #5865F2; /* Discord Blurple */
+        }
+
+        .btn {
+            background-color: #5865F2; /* Discord Blurple */
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 3px;
             width: 100%;
             text-decoration: none;
             display: block;
-            font-weight: bold;
-            font-size: 1em;
-            transition: 0.2s;
-            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.17s ease;
         }
 
         .btn:hover {
-            background-color: #92cc49;
-            cursor: pointer;
-            transform: translateY(-1px);
+            background-color: #4752c4;
         }
 
-        .footer-links {
-            margin-top: 25px;
-            font-size: 0.8em;
-            color: #777;
-        }
-
-        #timer {
-            font-weight: bold;
-            color: #82b541;
+        .footer {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #949ba4;
         }
     </style>
 </head>
 <body>
 
-    <div class="login-card">
-        <!-- Uses logo.png from your repository -->
-        <img src="logo.png" class="logo" alt="Logo">
+    <div class="discord-card">
+        <!-- Make sure logo.png is in your GitHub repo! -->
+        <img src="logo.png" class="logo" alt="LANC Logo">
         
-        <h2>Remote Login</h2>
+        <h1>You've been invited!</h1>
+        <p class="subtitle">Join the Lancasters SMP Community</p>
         
-        <p class="status-text">Establishing secure connection...</p>
-        
-        <!-- Manual Instant Redirect Button -->
-        <a href="https://discord.gg/invite/wwgS3fBHNR" class="btn">Login Now</a>
-
-        <div class="footer-links">
-            <p>Automatic redirect in <span id="count">5</span> seconds...</p>
+        <div class="timer-container">
+            <p class="timer-text">Redirecting you in <span id="countdown">5</span> seconds...</p>
         </div>
+        
+        <a href="https://discord.gg" class="btn">Accept Invite</a>
+
+        <p class="footer">If you are not redirected, click the button above.</p>
     </div>
 
     <script>
-        // Simple visual countdown script
-        var seconds = 5;
-        function countdown() {
-            seconds--;
-            document.getElementById("count").textContent = seconds;
-            if (seconds > 0) {
-                setTimeout(countdown, 1000);
+        // Visual countdown script
+        let timeLeft = 5;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
             }
-        }
-        setTimeout(countdown, 1000);
+        }, 1000);
     </script>
 
 </body>
